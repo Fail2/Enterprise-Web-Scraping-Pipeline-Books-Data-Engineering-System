@@ -49,6 +49,11 @@ class BooksPipeline:
             """
         )
         self.connection.execute("DELETE FROM books")
+
+        self.connection.execute("""
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_books_product_url
+            ON books(product_url)
+        """)
         self.connection.commit()
 
         self.logger.info("SQLite database opened: %s", path)
@@ -124,6 +129,21 @@ class BooksPipeline:
         # Normalize availability to a real Python boolean.
         availability_text = adapter["availability"].casefold().strip()
         adapter["availability"] = availability_text.startswith("in stock")
+
+
+        existing_book = self.connection.execute(
+            "SELECT 1 FROM books WHERE product_url = ?",
+            (adapter["product_url"],),
+        ).fetchone()
+
+        if existing_book:
+            self.logger.warning(
+                "Duplicate book skipped: %s",
+                adapter["product_url"],
+            )
+            raise DropItem(
+                f"Duplicate book: {adapter['product_url']}"
+            )
 
 
         # Store exactly the cleaned values that Scrapy exports.
