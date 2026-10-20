@@ -1,0 +1,42 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Git files
+.git/
+.gitignore
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Scrapyd runtime data
+dbs/
+eggs/
+logs/
+
+# Generated output files
+output/
+
+# Logs and temporary files
+*.log
+*.tmp
+.pytest_cache/
+
+# Build and distribution files
+build/
+dist/
