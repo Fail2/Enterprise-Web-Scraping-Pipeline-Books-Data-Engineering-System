@@ -1,45 +1,39 @@
-
-# Python
+# Python cache
 __pycache__/
 *.py[cod]
+*.egg-info/
 
 # Virtual environments
 venv/
 .venv/
 env/
 
-# Environment variables
-.env
-.env.*
-!.env.example
-
-# Scrapy
-.scrapy/
-
-# Generated exports
-books.json
-books.csv
-books.xml
-test_books.json
-
-# Databases
-*.db
-*.sqlite
-*.sqlite3
-
-# Logs and test artifacts
-*.log
-.pytest_cache/
-.coverage
-htmlcov/
-
-# IDE and OS
+# IDE and editor files
 .vscode/
 .idea/
+
+# Operating system files
 .DS_Store
 Thumbs.db
 
-# Build artifacts
+# Environment variables and secrets
+.env
+.env.*
+
+# Scrapy and Scrapyd runtime data
+dbs/
+eggs/
+logs/
+
+# Generated output files
+output/
+
+# Log and temporary files
+*.log
+*.tmp
+.pytest_cache/
+
+# Build and distribution files
 build/
 dist/
-*.egg-info/
+
