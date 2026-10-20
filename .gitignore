@@ -1,0 +1,45 @@
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Scrapy
+.scrapy/
+
+# Generated exports
+books.json
+books.csv
+books.xml
+test_books.json
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs and test artifacts
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
