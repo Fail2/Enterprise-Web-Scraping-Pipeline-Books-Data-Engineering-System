@@ -85,3 +85,34 @@ DOWNLOAD_DELAY = 1
 
 # Set settings whose default value is deprecated to a future-proof value
 FEED_EXPORT_ENCODING = "utf-8"
+
+ITEM_PIPELINES = {
+    "books_pipeline.pipelines.BooksPipeline": 300,
+}
+
+
+from pathlib import Path
+
+OUTPUT_DIR = Path("output")
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+SQLITE_DATABASE = str(OUTPUT_DIR / "books.db")
+
+FEEDS = {
+    str(OUTPUT_DIR / "books.json"): {
+        "format": "json",
+        "overwrite": True,
+        "encoding": "utf-8",
+    },
+    str(OUTPUT_DIR / "books.csv"): {
+        "format": "csv",
+        "overwrite": True,
+        "encoding": "utf-8",
+    },
+    str(OUTPUT_DIR / "books.xml"): {
+        "format": "xml",
+        "overwrite": True,
+        "encoding": "utf-8",
+    },
+}
+
