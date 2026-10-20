@@ -93,7 +93,9 @@ ITEM_PIPELINES = {
 
 from pathlib import Path
 
-OUTPUT_DIR = Path("output")
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+
+OUTPUT_DIR = PROJECT_DIR / "output"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 SQLITE_DATABASE = str(OUTPUT_DIR / "books.db")
