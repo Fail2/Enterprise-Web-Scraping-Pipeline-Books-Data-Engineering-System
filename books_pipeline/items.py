@@ -1,13 +1,15 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
 
-from dataclasses import dataclass
+"""Define the structured data model for scraped books."""
+
+import scrapy
 
 
-@dataclass
-class BooksPipelineItem:
-    # define the fields for your item here like:
-    # name: str | None = None
-    pass
+class BookItem(scrapy.Item):
+    """Represent a book scraped from a category page."""
+
+    title = scrapy.Field()
+    price = scrapy.Field()
+    availability = scrapy.Field()
+    product_url = scrapy.Field()
+    image_url = scrapy.Field()
+    category = scrapy.Field()
