@@ -2,6 +2,7 @@
 from urllib.parse import urljoin
 import random
 import scrapy
+from books_pipeline.items import BookItem
 
 
 class BooksSpider(scrapy.Spider):
@@ -130,12 +131,15 @@ class BooksSpider(scrapy.Spider):
 
         image_url = urljoin(response.url, image_path) if image_path else ""
 
-        yield {
-            "title": title,
-            "price": price,
-            "availability": availability_text,
-            "product_url": response.url,
-            "image_url": image_url,
-            "category": category_name,
-        }
+        item = BookItem()
+
+        item["title"] = title
+        item["price"] = price
+        item["availability"] = availability_text
+        item["product_url"] = response.url
+        item["image_url"] = image_url
+        item["category"] = category_name
+
+        yield item
+
 
